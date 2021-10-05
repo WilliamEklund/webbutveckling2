@@ -1,0 +1,136 @@
+* {
+        margin: 0;
+        padding: 0;
+        border: 0;
+}
+
+
+:root {
+        --main-color: #292525;
+        --complementary: #c97e59;
+}
+
+body {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100vh;
+        max-width: 100vw;
+}
+
+header {
+        background: var(--complementary);
+        text-align: center;
+        padding: 2em;
+}
+header ul{
+        display:  flex;
+        gap: 3em;
+        list-style: none;
+        margin: 0 auto;
+}
+header li a{
+        text-decoration: none;
+        font-size: 1.05rem;
+        color: var(--main-color);
+}
+main {
+        display: grid;
+        grid-auto-flow: auto;
+        grid-template-columns: 18% auto;
+        padding: 1.5rem 3rem;
+        background-color: azure;
+}
+
+aside {
+        background: var(--main-color);
+text-align: center;
+padding: 1em 2em;
+border-radius: 11px;
+border: 2px solid var(--complementary)
+}
+
+aside h2 {
+        color: var(--complementary);
+}
+
+aside ul {
+        list-style: none;
+        padding: 1em;
+}
+
+aside li {
+        line-height: 30px;
+        padding: 0 1em;
+}
+
+aside a {
+        text-decoration: none;
+        font-size: 1rem;
+        color: red;
+}
+
+/* main content */
+article{
+
+}
+article h2 {
+        text-align: center;
+        padding: 0.5em 1em 1em 0.5em;
+}
+
+.img-gallery{
+      display: grid;
+        gap: 2em;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+}
+.img-gallery img{
+        width: 75%;
+        height: auto;
+        margin-bottom: 11px;
+        border-radius: 40px;
+        transition: all ease-in-out 500ms;
+
+}
+.img-gallery img:hover{
+        transform: scale(1.1);
+        transition: all ease-in-out 180ms;
+}
+.items{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(100, 143, 163, 0.644);
+        border-radius: 3px;
+        padding: 40px 0px;
+        width: 75%;
+}
+.items h3{
+        padding: 0.5em;
+}
+.items p{
+        padding: 0.5em 4em;
+        line-height: 22px;
+}
+footer {
+        display: grid;
+        grid-auto-flow: column;
+        place-items: center;
+        padding-bottom: 3rem;
+        background: var(--main-color);
+        color: var(--complementary);
+        padding: 3rem 0 3rem 0;
+}
+
+footer ul {
+        list-style: none;
+}
+
+footer a {
+        text-decoration: none;
+        color: var(--complementary);
+}
+
+footer a:hover {
+        text-decoration: underline;
+}
