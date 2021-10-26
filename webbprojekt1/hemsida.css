@@ -146,11 +146,13 @@ a {
 
 .wrapper {}
 
-.header-wrapper{
-max-height: 180px;
+.header-wrapper {
+        max-height: 180px;
 }
-.header-wrapper li a {
+
+.header-wrapper li, .header-wrapper a {
         text-decoration: none;
+        list-style: none;
 }
 
 .top-header {
@@ -201,12 +203,13 @@ header .shopping-cart {
         background-color: aqua;
         padding: 9px 13px;
         border-radius: 6px;
+        z-index: 9999;
+
 }
 
 header .shopping-cart .fa-shopping-cart {
         font-size: 19px;
         color: #000;
-        margin-left: 10px;
 }
 
 header .shopping-cart a {
@@ -283,7 +286,7 @@ header .shopping-cart a {
         justify-content: center;
         width: 60%;
         position: relative;
-        left: 200px;
+        left: 10%;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto 2fr;
         margin: 0 auto;
@@ -436,7 +439,7 @@ header .shopping-cart a {
         justify-content: center;
         width: 90%;
         position: relative;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(1fr));
         margin: 0 auto;
         grid-template-areas: 'all-card-1 all-card-2 all-card-3''all-card-4 all-card-5 all-card-6''all-card-7 all-card-8 all-card-9''all-card-10 all-card-11 all-card-12';
         border: 1px solid #000;
@@ -486,6 +489,7 @@ header .shopping-cart a {
         grid-row: 3/3;
 
 }
+
 .all-card-7 {
         grid-area: all-card-7;
         grid-row: 4/4;
@@ -518,7 +522,24 @@ header .shopping-cart a {
 
 }
 
-@media only screen and (max-width: 1111px) {
+@media only screen and (max-width: 1497px) {
+
+        .card img {
+                width: 190px;
+                height: 190px;
+        }
+
+        .new-products a , .featured-products a {
+                width: 60%;
+        }
+        .new-products , .featured-products , .featured-text{
+                left: 130px;
+        }
+        .all-products{
+        }
+}
+
+@media only screen and (max-width: 1120px) {
         .sidebar {
                 display: none;
         }
@@ -533,6 +554,21 @@ header .shopping-cart a {
 
         .top-header ul {
                 width: 80%;
+        }
+
+        .main-content {}
+
+        .new-products,
+        .featured-products,
+        .featured-text {
+                width: 90%;
+                left: 60px;
+                position: relative;
+                margin: 0;
+        }
+
+        .new-products a {
+                width: 60%;
         }
 }
 
@@ -550,6 +586,18 @@ header .shopping-cart a {
         header .logo-txt {
                 margin-right: 50px;
         }
+header ul{
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        margin-right: 0;
+}
+.new-products , .featured-products , .featured-text{
+        left: 20px;
+}
+.all-products{
+        right: 18px;
+}
 }
 
 @media only screen and (max-width: 815px) {
@@ -560,6 +608,55 @@ header .shopping-cart a {
         header ul {
                 display: none;
 
+        }
+        .main-content{
+                display: block;
+        }
+        .new-products , .featured-products , .featured-text ,
+        .card{
+                grid-template-columns: repeat(auto-fit, minmax(160px));
+                grid-template-rows: repeat(auto-fit, minmax(1fr));
+                max-width: 100%;
+                height: auto;
+                left: 0;
+        }
+        .all-products{
+        display: block;
+        margin: 0;
+        }
+        .all-cards{
+                display: block;
+        }
+        .new-products h2{
+        }
+        
+        .new-card-1, .featured-card-1{
+                grid-row: 2/2;
+                grid-column: 2/3;
+
+        }
+        .new-card-2, .featured-card-2{
+                grid-row: 3/3;
+                grid-column: 2/3;
+
+        }
+        .new-card-3, .featured-card-3{
+                grid-row: 4/4;
+                grid-column: 2/3;
+
+        }
+        .new-products h2 , .featured-products h2 , .featured-text h2 , .all-products h2{
+                grid-row: 1/1;
+                grid-column: 2/3;
+                justify-self: center;
+        }
+        .new-products a , .featured-products a{
+                width: 80%;
+                margin-right: 100px;
+        }
+        .card img{
+                width: 250px;
+                height: 250px;
         }
 }
 
