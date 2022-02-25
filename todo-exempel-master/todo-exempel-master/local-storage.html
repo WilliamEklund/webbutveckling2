@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Att göra</title>
+    <script defer src="./js/app-local-storage.js"></script>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">Simpel</a>
+      <a href="with-local-storage.html" data-current>Med localStorage</a>
+      <a href="with-objects.html">Med objekt</a>
+    </header>
+    <main>
+      <section id="app-root">
+        <h1>Saker jag måste göra</h1>
+        <div id="list-root">
+          <!-- Allt här i genereras av Javascript -->
+        </div>
+        <form data-list-form>
+          <input type="text" data-list-input />
+          <button>+</button>
+        </form>
+      </section>
+
+      <aside>
+        <article>
+          <h2>Hur fungerar det?</h2>
+          <p>
+            Varje gång man gör en ändring i listan så kodas arrayet ner i en
+            sträng i JSON-format. Den strängen lagras i sin tur lokalt på
+            användarens dator genom localStorage objektet.
+          </p>
+          <p>
+            När vi kör igång scriptet första gången initierar den arrayet
+            baserat på vad som finns i localStorage. Om det inte finns någonting
+            där så skapar vi ett nytt tomt array istället.
+          </p>
+          <p>
+            Problemet med att vi filtrerar via själva texten på todo-elementet
+            återstår: vi tar fortfarande bort alla element som heter samma sak
+            om vi klickar på det. I
+            <a href="with-objects.html">exemplet med objekt</a> löser vi det
+            äntligen.
+          </p>
+        </article>
+        <article>
+          <h2>Vilka nya metoder har jag använt?</h2>
+          <section class="tag-list">
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem"
+              >localStorage.getItem</a
+            >
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem"
+              >localStorage.setItem</a
+            >
+            <a
+              href="https://developer.mozilla.org/en-us/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"
+              >JSON.stringify</a
+            >
+            <a
+              href="https://developer.mozilla.org/en-us/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"
+              >JSON.parse</a
+            >
+          </section>
+        </article>
+      </aside>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Okej, här kommer ett uppdrag som kanske är lite kul. Vi har en kund som heter Moderna försäkringar. De har en portal som innehåller en massa länkar. Det är viktigt att alla länkar som innehåller modernaforsakringar.humany.net öppnas i samma fönster. Om det öppnas i samma fönster eller ej styrs av attributet target. De har så många länkar att de inte orkar/kan/vill gå in och se till att varje länk har rätt target-attribut. De har därför bett mig ta fram ett skript som tar bort target-attributet om länken innehåller modernaforsakringar.humany.net
+Så du behöver typ göra så här: 1. Trigga på alla länkar som dyker upp på sidan (kan återanvända senaste skriptet och välja "a" som trigger i CSS), kontrollera om länkens href-attribut innehåller modernaforsakringar.humany.net (du kan nå href-attributet genom länkelementet.href och du kan söka med .indexOf() ). Om länken ger träff på modernaforsakringar.humany.net tar du bort attributet target, för om det inte finns något target-attribut öppans länken i samma flik/sida. Du kan testa lösningen här Copy of Kunskapsbanken - Villaägarna (humany.net) eller bara göra en enkel egen html-sida med ett par tre olika länkar. Länkarna på sidan jag skickade kommer peka mot sidor som du inte kan öppna så du får bara se att länkarna verkligen byts ut. Du kommer inte kunna klicka på länkarna (inte de som är moderna... i alla fall). Jag tänkte att du skulle få börja försöka på egen hand men jag förstår att det kanske är lite svårt. Vi kan också köra en kort Teams för att starta. Men det mesta går att läsa sig till på internet, t.ex. hur du använder indexOf(). Det är ju inte så kul om jag berättar exakt hur man gör eller gör hela jobbet åt dig. Vad tror du? -->
+
+    <a href="https://modernaforsakringar.humany.net/guides/556">Länk 1</a>
+    <a target="_blank" href="https://modernaforsakringar.humany.net/guides/432"
+      >Länk 2</a>
+    <a href="https://modernaforsakringar.humany.net/guides/345">Länk 3</a>
+    <a target="_blank" href="https://modernaforsakringar.humany.net/guides/667"
+      >Länk 4</a>
+    <a target="_blank" href="https://www.dn.se">Länk 5</a>
+    <a target="_blank" href="https://www.svd.se">Länk 6</a>
+
+    <script>
+var humany_targetLinks = ( function() {
+    document.head.appendChild(document.createElement('style')).innerHTML = `
+   a{
+         animation-duration:.001s;
+          animation-name:targetLinks}
+      @keyframes targetLinks {
+          from{opacity:.99}to{opacity:1}
+      } 
+   `;
+    var targetLinks = function(event) {
+        if (event.animationName === 'targetLinks') {
+              document.querySelectorAll('a').forEach(targetLink=>{
+  if (targetLink.href.indexOf("humany.net/guides")!== -1) {
+    targetLink.setAttribute("target", "_self");
+} 
+})
+            }
+        }
+    document.addEventListener("animationstart", targetLinks, false);
+    document.addEventListener("MSAnimationStart", targetLinks, false);
+    document.addEventListener("webkitAnimationStart", targetLinks, false);
+  }());
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&family=Telex&display=swap');
+
+/* CSS reset */ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;} /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0;} /* End */
+
+label, span, button, li{
+  font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+}
+h1, h2, h3{
+  font-family: 'Telex', sans-serif;
+}
+
+body{
+  background-color: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,rgb(35, 149, 243), rgb(187, 42, 223)
+    ) fixed;
+    background-repeat: no-repeat;
+    
+}
+.container{
+  background-color: rgb(237, 244, 251);
+  width: calc(350px + 10%);
+  padding: 40px 50px;
+  border-radius: 14px;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+}
+.container h1{
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 10px 0px;
+  margin-bottom: 30px;
+}
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 15px;
+}
+.hide{
+  display: none !important;
+}
+.currency-section{
+margin-bottom: 20px;
+}
+.crncy-btn{
+  cursor: pointer;
+  display: flex;
+  border-radius: 4px;
+border: none;
+padding: 4px 12px;
+color: #fff;
+font-size: 0.9rem;
+font-weight: 600;
+color: rgb(35, 149, 243);
+background-color:rgb(255, 255, 255);
+border: 1px solid rgb(35, 149, 243);
+transition: ease-in 0.15s;
+}
+.crncy-btn:hover{
+  transition: ease-out 0.15s;
+}
+button.active{
+  background-color:rgb(35, 149, 243);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+}
+.crncy-list{
+padding: 12px;
+line-height: 25px;
+display: flex;
+position: absolute;
+margin: 0 0 0px 80px;
+cursor: default;
+top: 100px;
+}
+.crncy-list li{
+margin: 0px 12px;
+padding:5px 0px 1px 6px;
+cursor: pointer;
+text-align: center;
+transition: ease-in 0.12s;
+
+}
+.crncy-list img{
+width: 20px;
+height: auto;
+}
+.active-crncy{
+  transform: scale(1.2);
+transition: ease-out 0.15s;
+border-bottom: 2px solid rgb(35, 149, 243);
+border-radius: 2px;
+}
+.tip-section{
+  border-bottom: 1px solid #cdcfcf;
+padding: 5px 0px 20px;
+}
+.lbl{
+  font-size: 16px;
+  color: rgb(29, 6, 156);
+  font-weight: 400;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.val::-webkit-outer-spin-button,
+input.val::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input.val[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input-box{
+  background-color: #cdcfcf9d;
+  color:rgb(35, 149, 243);
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+#bill{
+  background-color: transparent;
+  border: none;
+ width: 100px ;
+  outline: none;
+  text-align: right;
+  color:rgb(35, 149, 243);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+input[type="range"]{
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+section{
+  margin-top: 30px;
+}
+.result-section{
+  padding: 1px 0px;
+  background-color: rgba(192, 241, 128, 0.397);
+  border-radius: 11px;
+  box-shadow: 0px 2px 13px 0px rgba(0, 0, 0, 0.233);
+ 
+}
+.result-section .crncy{
+ font-weight: 800;
+}
+/* history section */
+.history-section{
+display: flex;
+flex-direction: column;
+}
+.history-section h2{
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 10px 0px;
+  margin-bottom: 30px;
+}
+/* Saved data container */
+#save-data-container{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background-color: #ffff;
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  width: 10%;
+  height: 500px;
+  padding: 30px 35px;
+
+  
+}

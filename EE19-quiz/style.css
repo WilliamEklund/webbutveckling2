@@ -1,0 +1,25 @@
+body{
+  background-color: cornflowerblue;
+}
+header h1{
+  text-align: center;
+  color: #fff;
+}
+form, .result-box{
+  margin: 1.5rem;
+  padding: 1.5rem;
+  background-color: #fff;
+}
+.question{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1.5rem;
+  grid-gap: 0.5rem;
+}
+.question p{
+  grid-column: span 2;
+  font-size: 1.5rem;
+}
+input[type="radio"]{
+  padding: 4px 6px;
+}
