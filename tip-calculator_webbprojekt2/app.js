@@ -192,13 +192,7 @@ function removeItem(e) {
 	}, 350);
 
 	let idOfObjectToRemove = e.currentTarget.getAttribute("data-id");
-	console.log(idOfObjectToRemove);
-	console.log(tips);
-	let objectToRemove = tips.find((item) => {item.id == idOfObjectToRemove});
-	console.log(objectToRemove);
-	if (objectToRemove) {
-		tips.splice(tips.indexOf(objectToRemove), 1);
-	}
+	tips = tips.filter((item) => item.id !== idOfObjectToRemove);
 	saveList();
 }
 
