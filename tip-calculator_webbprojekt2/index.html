@@ -9,81 +9,79 @@
 </head>
 
 <body>
-  <div id="save-data-container">
-    <h2>Saved Tips</h2>
-    <ul class="save-data-list">
-
-    </ul>
-    <!-- Javascript generate -->
-  </div>
-  <div class="container">
-    <h1>Tip Calculator</h1>
-    <div class="wrapper currency-section">
-      <button class="crncy-btn">Currency</button>
-
-      <ul class="crncy-list hide">
-        <li class="us-crncy active-crncy"><img src="./images/5fc7e91c4254e.hires.png" alt="American_Flag"> $</li>
-        <li class="swe-crncy"><img src="./images/1200px-Flag_of_Sweden.svg.webp" alt="Swedish_Flag"> kr</li>
-        <li class="uk-crncy"><img src="./images/1200px-Flag_of_the_United_Kingdom.svg.png" alt="United_Kingdom"> £</li>
-        <li class="jp-crncy"><img src="./images/1200px-Flag_of_Japan.svg.png" alt="Japan_Flag"> ¥</li>
-      </ul>
-
+  <div class="main-container">
+    <div class="saved-tips-container">
+      <h2>Saved Tips</h2>
+      <!-- Javascript generated content -->
     </div>
-    <section>
-      <div class="wrapper bill-section">
-        <label for="bill" class="lbl">Bill</label>
+    <div class="tipCalc-container">
+      <h1>Tip Calculator</h1>
+      <div class="wrapper currency-section">
+        <button class="crncy-btn">Currency</button>
 
-        <div class="input-box">
-          <span class="crncy">$</span>
-          <input type="number" value="0.00" id="bill" class="val" onfocus="this.value = ''">
+        <ul class="crncy-list hide">
+          <li class="us-crncy-option active-crncy"><img src="./images/5fc7e91c4254e.hires.png" alt="American_Flag"> $</li>
+          <li class="swe-crncy-option"><img src="./images/1200px-Flag_of_Sweden.svg.webp" alt="Swedish_Flag"> kr</li>
+          <li class="uk-crncy-option"><img src="./images/1200px-Flag_of_the_United_Kingdom.svg.png" alt="United_Kingdom"> £
+          </li>
+          <li class="jp-crncy-option"><img src="./images/1200px-Flag_of_Japan.svg.png" alt="Japan_Flag"> ¥</li>
+        </ul>
+
+      </div>
+      <section>
+        <div class="wrapper bill-section">
+          <label for="bill" class="lbl">Bill</label>
+
+          <div class="input-box">
+            <span class="crncy">$</span>
+            <input type="number" value="0.00" id="bill" class="val" onfocus="this.value = ''">
+          </div>
         </div>
-      </div>
 
-      <div class="wrapper tip-section">
-        <span class="lbl">Tip</span>
-        <span id="tip-amount" class="crncy">$ 0</span>
-      </div>
+        <div class="wrapper tip-section">
+          <span class="lbl">Tip</span>
+          <span id="tip-amount" class="crncy">$ 0</span>
+        </div>
 
-      <div class="wrapper tot-amnt-section">
-        <span class="lbl">Total amount</span>
-        <span id="total-amount" class="val crncy">$ 0</span>
-      </div>
-    </section>
+        <div class="wrapper tot-amnt-section">
+          <span class="lbl">Total amount</span>
+          <span id="total-amount" class="val crncy">$ 0</span>
+        </div>
+      </section>
 
-    <section>
-      <div class="wrapper tip-percent-section">
-        <label for="tip" class="lbl">Tip %</label>
-        <span id="tip-percent" class="val">0</span>
-      </div>
-      <input type="range" min="1" id="tip" value="15">
+      <section>
+        <div class="wrapper tip-percent-section">
+          <label for="tip" class="lbl">Tip %</label>
+          <span id="tip-percent" class="val">0</span>
+        </div>
+        <input type="range" min="1" id="tip" value="15">
 
-      <div class="wrapper no-of-people-section">
-        <label for="no-of-people" class="lbl">No. Of People</label>
-        <span id="split-num" class="val">0</span>
-      </div>
-      <input type="range" min="1" max="15" id="no-of-people" value="1">
-    </section>
+        <div class="wrapper no-of-people-section">
+          <label for="no-of-people" class="lbl">No. Of People</label>
+          <span id="split-num" class="val">0</span>
+        </div>
+        <input type="range" min="1" max="15" id="no-of-people" value="1">
+      </section>
 
-    <section class="result-section">
-      <div class="wrapper tip-pp-section ">
-        <span class="lbl">Tip Per Person</span>
-        <span id="tip-per-person" class="val crncy tip-pp-crncy">$0</span>
-      </div>
+      <section class="result-section">
+        <div class="wrapper tip-pp-section ">
+          <span class="lbl">Tip Per Person</span>
+          <span id="tip-per-person" class="val crncy tip-pp-crncy">$0</span>
+        </div>
 
-      <div class="wrapper total-pp-section">
-        <span class="lbl">Total Per Person</span>
-        <span id="total-per-person" class="val crncy total-pp-crncy">$0</span>
-      </div>
-    </section>
+        <div class="wrapper total-pp-section">
+          <span class="lbl">Total Per Person</span>
+          <span id="total-per-person" class="val crncy total-pp-crncy">$0</span>
+        </div>
+      </section>
 
-    <!-- Store history data -->
-    <section class="save-data-section">
-      <button class="save-data">Save</button>
-    
-      <button class="remove-data">Remove</button>
-    </section>
+      <!-- Store history data -->
+      <section class="save-data-section">
+        <button class="save-data">Save</button>
 
-
+        <button class="remove-data">Remove All</button>
+      </section>
+    </div>
   </div>
 
   <script src="./app.js" defer> </script>

@@ -1,107 +1,72 @@
-let allReceipts = [];
 
-// select currencies
-const crncy_btn = document.querySelector(".crncy-btn");
-const crncy_list = document.querySelector(".crncy-list");
-const swe_crncy = document.querySelector(".swe-crncy");
-const us_crncy = document.querySelector(".us-crncy");
-const uk_crncy = document.querySelector(".uk-crncy");
-const jp_crncy = document.querySelector(".jp-crncy");
-const crncy_spans = document.querySelectorAll("span.crncy");
-const crncy_span_first = document.querySelector("span:first-child");
-// const crncy_span_bill = document.querySelectorAll(".input-box .crncy");
-// const tipPP_crncy = document.querySelector(".tip-pp-crncy");
-// const totPP_crncy = document.querySelector(".total-pp-crncy");
+// Save / remove data
+const LOCAL_STORAGE_KEY_TIPS = "app.Tips";
+let tips = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TIPS)) || [];
 
-
+const crncyBtn = document.querySelector(".crncy-btn");
+const crncyList = document.querySelector(".crncy-list");
+const sweCrncyOpt = document.querySelector(".swe-crncy-option");
+const usCrncyOpt = document.querySelector(".us-crncy-option");
+const ukCrncyOpt = document.querySelector(".uk-crncy-option");
+const jpCrncyOpt = document.querySelector(".jp-crncy-option");
+const crncySpans = document.querySelectorAll("span.crncy");
+const crncySpanFirst = document.querySelector("span:first-child");
 
 // switch currencies
-crncy_btn.addEventListener("click", () => {
-	crncy_list.classList.toggle("hide");
+crncyBtn.addEventListener("click", () => {
+	crncyList.classList.toggle("hide");
 
-	if (crncy_list.classList.contains("hide") === false) {
-		crncy_btn.classList.add("active");
+	if (crncyList.classList.contains("hide") === false) {
+		crncyBtn.classList.add("active");
+		crncyBtn.style = `
+		background-color:rgb(35, 149, 243);
+		color: rgb(255, 255, 255);
+		border: 1px solid rgb(255, 255, 255);
+		`;
 	} else {
-		crncy_list.classList.remove("active");
+		crncyList.classList.remove("active");
+		crncyBtn.style = "";
 	}
 });
-
-// US
-us_crncy.addEventListener("click", () => {
-	us_crncy.classList.add("active-crncy");
-	swe_crncy.classList.remove("active-crncy");
-	uk_crncy.classList.remove("active-crncy");
-	jp_crncy.classList.remove("active-crncy");
-	crncy_spans.forEach((crncy_span) => {
-		if (crncy_span.classList.contains("crncy")) {
-
-			crncy_span_first.innerHTML = "$";
-			let usCrncy = crncy_span.innerHTML.replace(/[kr£¥]/g, "$");
-				crncy_span.innerHTML = usCrncy;
-		}
-		
-	});
-});
-
-
-	// SWE
-	swe_crncy.addEventListener("click", () => {
-
-		crncy_spans.forEach((crncy_span) => {
-			swe_crncy.classList.add("active-crncy");
-			us_crncy.classList.remove("active-crncy");
-			uk_crncy.classList.remove("active-crncy");
-			jp_crncy.classList.remove("active-crncy");
-
-			if (crncy_span.classList.contains("crncy")) {
-				crncy_span_first.innerHTML = "kr";
-			let sweCrncy = crncy_span.innerHTML.replace(/[$£¥]/g, '');
-				crncy_span.innerHTML = sweCrncy.concat("kr");
-			}
-		});
-	
-	});
-
-
-// UK
-uk_crncy.addEventListener("click", () => {
-	crncy_spans.forEach((crncy_span) => {
-		uk_crncy.classList.add("active-crncy");
-		swe_crncy.classList.remove("active-crncy");
-		us_crncy.classList.remove("active-crncy");
-		jp_crncy.classList.remove("active-crncy");
-		if (crncy_span.classList.contains("crncy")) {
-			crncy_span_first.innerHTML = "£";
-			let ukCrncy = crncy_span.innerHTML.replace(/[$kr¥]/g, '£');
-			crncy_span.innerHTML = ukCrncy;
-		}
-	});
-});
-// Japan
-jp_crncy.addEventListener("click", () => {
-	crncy_spans.forEach((crncy_span) => {
-		jp_crncy.classList.add("active-crncy");
-		swe_crncy.classList.remove("active-crncy");
-		us_crncy.classList.remove("active-crncy");
-		uk_crncy.classList.remove("active-crncy");
-		if (crncy_span.classList.contains("crncy")) {
-			crncy_span_first.innerHTML = "¥";
-			let jpCrncy = crncy_span.innerHTML.replace(/[$kr£]/g, '¥');
-			crncy_span.innerHTML = jpCrncy;
-			length.toFixed(2);
-		}
-	});
-});
-
 
 // get input elements
 const sliders = document.querySelectorAll('input[type="range"]');
 const billInput = document.querySelector("#bill");
-sliders.forEach(function (slider) {
+sliders.forEach((slider) => {
 	slider.addEventListener("input", calcTip);
 });
 billInput.addEventListener("change", calcTip);
 
+usCrncyOpt.addEventListener("click", () => {
+	usCrncyOpt.classList.add("active-crncy");
+	sweCrncyOpt.classList.remove("active-crncy");
+	ukCrncyOpt.classList.remove("active-crncy");
+	jpCrncyOpt.classList.remove("active-crncy");
+	calcTip();
+});
+sweCrncyOpt.addEventListener("click", () => {
+	usCrncyOpt.classList.remove("active-crncy");
+	sweCrncyOpt.classList.add("active-crncy");
+	ukCrncyOpt.classList.remove("active-crncy");
+	jpCrncyOpt.classList.remove("active-crncy");
+	calcTip();
+});
+// UK
+ukCrncyOpt.addEventListener("click", () => {
+	usCrncyOpt.classList.remove("active-crncy");
+	sweCrncyOpt.classList.remove("active-crncy");
+	ukCrncyOpt.classList.add("active-crncy");
+	jpCrncyOpt.classList.remove("active-crncy");
+	calcTip();
+});
+// UK
+jpCrncyOpt.addEventListener("click", () => {
+	usCrncyOpt.classList.remove("active-crncy");
+	sweCrncyOpt.classList.remove("active-crncy");
+	ukCrncyOpt.classList.remove("active-crncy");
+	jpCrncyOpt.classList.add("active-crncy");
+	calcTip();
+});
 // calculate
 function calcTip() {
 	// get input values
@@ -116,87 +81,152 @@ function calcTip() {
 	let tipPP = (totTip / NoOfPpl).toFixed(2);
 	let totPP = (tot / NoOfPpl).toFixed(2);
 
-	// Display value
 	// US
-	if (us_crncy.classList.contains("active-crncy")) {
-		document.querySelector("#tip-amount").textContent = `\$${totTip}`;
-		document.querySelector("#total-amount").textContent = `\$${tot}`;
-		document.querySelector("#tip-percent").textContent = `${tipPercent}\%`;
-		document.querySelector("#split-num").textContent = NoOfPpl;
-		document.querySelector("#tip-per-person").textContent = `\$${tipPP}`;
-		document.querySelector("#total-per-person").textContent = `\$${totPP}`;
+	if (usCrncyOpt.classList.contains("active-crncy")) {
+		crncySpanFirst.innerHTML = "$";
+		document.querySelector("#tip-amount").innerHTML = `\$${totTip}`;
+		document.querySelector("#total-amount").innerHTML = `\$${tot}`;
+		document.querySelector("#tip-percent").innerHTML = `${tipPercent}\%`;
+		document.querySelector("#split-num").innerHTML = NoOfPpl;
+		document.querySelector("#tip-per-person").innerHTML = `\$${tipPP}`;
+		document.querySelector("#total-per-person").innerHTML = `\$${totPP}`;
 	}
 	// SWE
-	if (swe_crncy.classList.contains("active-crncy")) {
-		document.querySelector("#tip-amount").textContent = `${totTip}`;
+	if (sweCrncyOpt.classList.contains("active-crncy")) {
+		crncySpanFirst.innerHTML = "kr";
+		document.querySelector("#tip-amount").innerHTML = `${totTip}\kr`;
 
-		document.querySelector("#total-amount").textContent = `${tot}`;
+		document.querySelector("#total-amount").innerHTML = `${tot}\kr`;
 
-		document.querySelector("#tip-percent").textContent = `${tipPercent}\%`;
+		document.querySelector("#tip-percent").innerHTML = `${tipPercent}\%`;
 
-		document.querySelector("#split-num").textContent = NoOfPpl;
+		document.querySelector("#split-num").innerHTML = NoOfPpl;
 
-		document.querySelector("#tip-per-person").textContent = `${tipPP}`;
+		document.querySelector("#tip-per-person").innerHTML = `${tipPP}\kr`;
 
-		document.querySelector("#total-per-person").textContent = `${totPP}`;
+		document.querySelector("#total-per-person").innerHTML = `${totPP}\kr`;
 	}
 	// UK
-	if (uk_crncy.classList.contains("active-crncy")) {
-		document.querySelector("#tip-amount").textContent = `\£${totTip}`;
+	if (ukCrncyOpt.classList.contains("active-crncy")) {
+		crncySpanFirst.innerHTML = "£";
+		document.querySelector("#tip-amount").innerHTML = `\£${totTip}`;
 
-		document.querySelector("#total-amount").textContent = `\£${tot}`;
+		document.querySelector("#total-amount").innerHTML = `\£${tot}`;
 
-		document.querySelector("#tip-percent").textContent = `${tipPercent}\%`;
+		document.querySelector("#tip-percent").innerHTML = `${tipPercent}\%`;
 
-		document.querySelector("#split-num").textContent = NoOfPpl;
+		document.querySelector("#split-num").innerHTML = NoOfPpl;
 
-		document.querySelector("#tip-per-person").textContent = `\£${tipPP}`;
+		document.querySelector("#tip-per-person").innerHTML = `\£${tipPP}`;
 
-		document.querySelector("#total-per-person").textContent = `\£${totPP}`;
+		document.querySelector("#total-per-person").innerHTML = `\£${totPP}`;
 	}
 	// Japan
-	if (jp_crncy.classList.contains("active-crncy")) {
-		document.querySelector("#tip-amount").textContent = `\¥${totTip}`;
+	if (jpCrncyOpt.classList.contains("active-crncy")) {
+		crncySpanFirst.innerHTML = "¥";
+		document.querySelector("#tip-amount").innerHTML = `\¥${totTip}`;
 
-		document.querySelector("#total-amount").textContent = `\¥${tot}`;
+		document.querySelector("#total-amount").innerHTML = `\¥${tot}`;
 
-		document.querySelector("#tip-percent").textContent = `${tipPercent}\%`;
+		document.querySelector("#tip-percent").innerHTML = `${tipPercent}\%`;
 
-		document.querySelector("#split-num").textContent = NoOfPpl;
+		document.querySelector("#split-num").innerHTML = NoOfPpl;
 
-		document.querySelector("#tip-per-person").textContent = `\¥${tipPP}`;
+		document.querySelector("#tip-per-person").innerHTML = `\¥${tipPP}`;
 
-		document.querySelector("#total-per-person").textContent = `\¥${totPP}`;
+		document.querySelector("#total-per-person").innerHTML = `\¥${totPP}`;
 	}
-	// Store data history
-	// const LOCAL_STORAGE_KEY_TODOS = "app.getData";
-
-	// let getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TODOS)) || [];
 }
 calcTip();
 
-// Save data
 let saveDataBtn = document.querySelector(".save-data");
-removeDataBtn = document.querySelector(".remove-data");
-saveDataBtn.addEventListener("click", (e) => {
+let removeDataBtn = document.querySelector(".remove-data");
+
+saveDataBtn.addEventListener("click", () => {
 	let tipPerPerson = document.querySelector("#tip-per-person").innerText;
-	tipPerPerson = tipPerPerson.substring(1);
+	tipPerPerson = tipPerPerson.substring(0);
 
 	let totalPerPerson = document.querySelector("#total-per-person").innerText;
-	totalPerPerson = totalPerPerson.substring(1);
+	totalPerPerson = totalPerPerson.substring(0);
 
-	let receipt = {
+	let listContainer = document.querySelector(".saved-tips-container");
+	let listHolder = document.createElement("ul");
+	let listItemTipPP = document.createElement("li");
+	let listItemTotPP = document.createElement("li");
+	let iconRemove = document.createElement("i");
+	listItemTipPP.innerHTML = "Tip Per Person " + tipPerPerson;
+	listItemTotPP.innerHTML = "Total Per Person " + totalPerPerson;
+	listItemTipPP.classList.add("tipPP-list-item");
+	listItemTotPP.classList.add("totPP-list-item");
+	listHolder.classList.add("list-holder", "add-item");
+	iconRemove.classList.add("bi", "bi-x-circle-fill");
+
+	// let pattern = new RegExp("([\£\$\¥\kr\])(?=[0])");
+	listHolder.append(listItemTipPP, listItemTotPP, iconRemove);
+	listContainer.appendChild(listHolder);
+	let listHolders = document.querySelectorAll('.list-holder');
+		if (listHolders.length > 8) {
+			listContainer.style.height = 'auto';
+		}
+		else {
+			listContainer.style.height = '650px';
+		}
+
+	const receipt = {
 		tipPerPerson: tipPerPerson,
 		totalPerPerson: totalPerPerson,
-	};
-	let list = document.querySelector(".save-data-list");
-	let listItems = document.createElement("li");
-	listItems.innerText = tipPerPerson + totalPerPerson;
-	allReceipts.push(receipt);
-	console.log(allReceipts);
-	list.append(listItems);
-
+		id: Date.now().toString(),
+	}
+	tips.push(receipt);
+	listHolder.setAttribute("data-id", receipt.id);
+	listHolder.addEventListener("click", removeItem);
+	saveList();
 });
+// Remove item on click
+function removeItem(e) {
+	let itemToRemove = e.currentTarget;
+	itemToRemove.classList.remove("add-item");
+	itemToRemove.classList.add("remove-item");
+	setTimeout(function () {
+		itemToRemove.remove(e);
+	}, 350);
+
+	let idOfObjectToRemove = e.currentTarget.getAttribute("data-id");
+	console.log(idOfObjectToRemove);
+	console.log(tips);
+	let objectToRemove = tips.find((item) => {item.id == idOfObjectToRemove});
+	console.log(objectToRemove);
+	if (objectToRemove) {
+		tips.splice(tips.indexOf(objectToRemove), 1);
+	}
+	saveList();
+}
+
+// Remove all items
+removeDataBtn.addEventListener("click", (e) => {
+	let listContainer = document.querySelector(".saved-tips-container");
+	let listHolders = document.querySelectorAll('.list-holder');
+	listHolders.forEach((listHolder) => {
+		listHolder.classList.remove("add-item");
+		listHolder.classList.add("remove-item");
+		setTimeout(function () {
+			listHolder.remove(e);
+			listContainer.style.height = '650px';
+		}, 350);
+		
+		tips = [];
+		saveList();
+	});
+});
+function saveList() {
+	localStorage.setItem(LOCAL_STORAGE_KEY_TIPS, JSON.stringify(tips));
+}
+
+// function removeAllItems(event) {
+// 	let itemsToRemove = event.innerHTML;
+// 	itemsToRemove.remove(event);
+// }
+
 
 // let historyRoot = document.querySelector('#history-root');
 // let clearHistoryBtn = document.querySelector('.clear-history');
