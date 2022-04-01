@@ -153,9 +153,9 @@ body {
 .main-container {
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
+  overflow: hidden;
   gap: 5%;
-  transform: translateY(10%);
+  margin-top: 8vh;
 }
 .tipCalc-container {
   order: 1;
@@ -277,26 +277,44 @@ input[type="range"] {
 .result-section {
   padding: 1px 0px;
   border-radius: 11px;
-  box-shadow: 0px 1px 12px 0px rgba(80, 80, 80, 0.233);
- background-color: #8383831a;
+  background-color: #ceccfd;
+}
+.result-section .lbl {
+  letter-spacing: 0.5px;
+}
+.result-section .crncy {
+  color: #373737;
+  font-weight: 800;
 }
 
 /* Saved tips */
 .saved-tips-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
   order: 2;
   display: flex;
   flex-direction: column;
   width: 350px;
-  height: 650px;
   background-color: rgb(237, 244, 251);
-  padding: 30px 20px 50px 20px;
+  padding-top: 30px;
   border-radius: 14px;
   box-shadow: var(--box-shadow);
 }
-.saved-tips-container h2 {
-  font-size: 1.2rem;
+.saved-tips-container h1 {
+  font-size: 1.4rem;
   text-align: center;
-  margin: 0px 5px 30px 5px;
+  margin: 0px 0px 50px 0px;
+  padding: 20px 0px;
+  border-bottom: 1px solid #373737;
+}
+.saved-tips-content {
+  position: relative;
+  height: auto;
+}
+.saved-tips-items {
+  padding: 0 10px 50px 10px;
 }
 .list-holder {
   display: flex;
@@ -308,7 +326,7 @@ input[type="range"] {
   transition: ease-out 0.3s;
   border-bottom: 1px solid #cdcfcf;
 }
-.list-holder li{
+.list-holder li {
   width: 130px;
   color: rgb(31, 31, 31);
 }
@@ -318,15 +336,15 @@ i.bi {
   font-size: 21px;
   transition: ease-out 0.4s;
   color: #e74c3c;
-  right: 5%;
+  right: 15px;
 }
-.list-holder:hover{
+.list-holder:hover {
   background-color: #e74c3c;
   border-bottom: 1px solid #e74c3c;
   border-radius: 7px;
   transition: ease-in 0.2s;
 }
-.list-holder:hover i{
+.list-holder:hover i {
   z-index: 9999;
   color: #fff;
   transition: ease-out 0.3s;
@@ -334,49 +352,61 @@ i.bi {
 .list-holder li:nth-child(odd) {
   margin-right: 10px;
 }
-.list-holder:hover li{
+.list-holder:hover li {
   color: #fff;
   opacity: 0.5;
 }
 
 .add-item {
-  opacity: 0;
-  animation: new-item-animation 0.3s linear forwards;
+  transform: translateX(300px);
+  animation: add-item-animation 0.6s cubic-bezier(0.14, 0.25, 0.52, 1.56)
+    forwards;
 }
-@keyframes new-item-animation {
-  from {
+@keyframes add-item-animation {
+  0% {
     opacity: 0;
-    scale: 0.4;
-    transform: translateX(-400px);
+    transform: translateX(300px);
   }
-  to {
+  70% {
     opacity: 1;
-  scale: 1;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
     transform: translateX(0);
   }
 }
 .remove-item {
-  animation: removed-item-animation 0.8s cubic-bezier(.65,-0.02,.72,.29);
-  transition: ease 3s;
+  animation: remove-item-animation 0.6s cubic-bezier(0.65, -0.02, 0.72, 0.99);
 }
-@keyframes removed-item-animation {
+@keyframes remove-item-animation {
   0% {
     opacity: 1;
     transform: translateX(0);
   }
+  25% {
+    opacity: 1;
+    transform: translateX(-90px);
+  }
   50% {
     opacity: 0.5;
-    transform: translateX(50%);
+    transform: translateX(15vw);
+  }
+  75% {
+    opacity: 0;
+    transform: translateX(30vw);
   }
   100% {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(50vw);
   }
 }
+
 @media only screen and (max-width: 1125px) {
   .main-container {
     flex-direction: column;
-    transform: translateY(3%);
+    margin-top: 5vh;
+    margin-bottom: 5vh;
   }
   .saved-tips-container {
     align-self: center;
@@ -409,5 +439,16 @@ i.bi {
   .list-holder {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 579px) {
+  .list-holder li {
+    width: auto;
+  }
+  i.bi {
+    right: 5px;
+  }
+  .list-holder {
+    padding: 8px 5px;
   }
 }

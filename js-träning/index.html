@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
+	<title>Javascript träning mm</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<main>
+		<form id="studentForm">
+			<input type="text" placeholder="Student name" name="name" required />
+			<input type="number" placeholder="Student age" name="age" required />
+			<input type="number" placeholder="Student roll" name="roll" required />
+			<button>Add student</button>
+		</form>
+		<div class="students"></div>
+	</main>
+
+	<script>
+		// DOM Elements
+		const studentForm = document.getElementById("studentForm");
+		const studentsContainer = document.querySelector(".students");
+		const nameInput = studentForm["name"];
+		const ageInput = studentForm["age"];
+		const rollInput = studentForm["roll"];
+
+
+		const students = JSON.parse(localStorage.getItem("students")) || [];
+
+		const addStudent = (name, age, roll) => {
+			students.push({
+				name,
+				age,
+				roll,
+			});
+
+			localStorage.setItem("students", JSON.stringify(students));
+
+			return { name, age, roll };
+		};
+
+		const createStudentElement = ({ name, age, roll }) => {
+			// Create elements
+			const studentDiv = document.createElement("div");
+			const studentName = document.createElement("h2");
+			const studentAge = document.createElement("p");
+			const studentRoll = document.createElement("p");
+
+			// Fill the content
+			studentName.innerText = "Student name: " + name;
+			studentAge.innerText = "Student age: " + age;
+			studentRoll.innerText = "Student roll: " + roll;
+
+			// Add to the DOM
+			studentDiv.append(studentName, studentAge, studentRoll);
+			studentsContainer.appendChild(studentDiv);
+
+			studentsContainer.style.display = students.length === 0 ? "none" : "flex";
+		};
+
+		studentsContainer.style.display = students.length === 0 ? "none" : "flex";
+
+		students.forEach(createStudentElement);
+
+		studentForm.onsubmit = e => {
+			e.preventDefault();
+
+			const newStudent = addStudent(
+				nameInput.value,
+				ageInput.value,
+				rollInput.value
+			);
+
+			createStudentElement(newStudent);
+
+			nameInput.value = "";
+			ageInput.value = "";
+			rollInput.value = "";
+		};
+
+	</script>
+
+</body>
+
+</html>
+
+
+
+
+<!-- //   var arr = [4, 5, 7, 8, 14, 45, 76, 5];
+// let filtered=arr.filter((i)=>i%2===1);
+// console.log(filtered);
+
+//   let getName = function(hobby1, hobby2) {
+//      console.log(this.name + ' likes ' + hobby1 + ' , ' + hobby2);
+//  }
+ 
+// let user = {
+//    name: 'Tapas',
+//    address: 'Bangalore'  
+//  };
+
+// let hobbies = ['Swimming', 'Blogging'];
+ 
+// getName.apply(user, hobbies);
+
+// odd index
+		// let filtered = tips.filter((a, i) => i % 2 === 1);
+		// let newString = JSON.stringify(filtered);
+		// console.log(filtered); -->
+
+</body>
+
+</html>

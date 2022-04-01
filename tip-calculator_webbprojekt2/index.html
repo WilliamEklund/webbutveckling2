@@ -6,23 +6,29 @@
   <meta name="viewport" content="width=device-width initial-scale=1.0">
   <title>Tip Calculator</title>
   <link rel="stylesheet" href="style.css">
+  <script src="./app-test.js" defer></script>
 </head>
 
 <body>
   <div class="main-container">
     <div class="saved-tips-container">
-      <h2>Saved Tips</h2>
-      <!-- Javascript generated content -->
+      <h1>Saved Tips</h1>
+      <div class="saved-tips-items">
+        <!-- Javascript generated content -->
+      </div>
     </div>
+
     <div class="tipCalc-container">
       <h1>Tip Calculator</h1>
       <div class="wrapper currency-section">
         <button class="crncy-btn">Currency</button>
 
         <ul class="crncy-list hide">
-          <li class="us-crncy-option active-crncy"><img src="./images/5fc7e91c4254e.hires.png" alt="American_Flag"> $</li>
+          <li class="us-crncy-option active-crncy"><img src="./images/5fc7e91c4254e.hires.png" alt="American_Flag"> $
+          </li>
           <li class="swe-crncy-option"><img src="./images/1200px-Flag_of_Sweden.svg.webp" alt="Swedish_Flag"> kr</li>
-          <li class="uk-crncy-option"><img src="./images/1200px-Flag_of_the_United_Kingdom.svg.png" alt="United_Kingdom"> £
+          <li class="uk-crncy-option"><img src="./images/1200px-Flag_of_the_United_Kingdom.svg.png"
+              alt="United_Kingdom"> £
           </li>
           <li class="jp-crncy-option"><img src="./images/1200px-Flag_of_Japan.svg.png" alt="Japan_Flag"> ¥</li>
         </ul>
@@ -78,13 +84,11 @@
       <!-- Store history data -->
       <section class="save-data-section">
         <button class="save-data">Save</button>
-
         <button class="remove-data">Remove All</button>
       </section>
     </div>
   </div>
 
-  <script src="./app.js" defer> </script>
 </body>
 
 </html>

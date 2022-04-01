@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <title></title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="./22-03-25.js"> </script>
+</head>
+
+<body>
+  <div id="app-root">
+    <!-- <input type="text" v-model="firstName">
+    <input type="text" v-model="lastName">
+    <button v-if="showBtn" @click="reverse">Reverse name</button>
+    <h3>{{firstName + " " + lastName}}</h3> -->
+    <div v-for="album in albums" class="album">
+      <input v-model="album.title" type="text">
+      <input v-model="album.artist" type="text">
+      <h2>{{album.title}}</h2>
+      <h3>{{album.artist}}</h3>
+
+      <select>
+        <option value="" v-for ="genre in genres">
+          {{ genre }}
+        </option>
+      </select>
+      <button @click="removeAlbum(album)">Remove</button>
+
+    </div>
+    <button v-if="albums.length < 30" @click="addAlbum">Add</button>
+  </div>
+
+
+
+</body>
+
+</html>

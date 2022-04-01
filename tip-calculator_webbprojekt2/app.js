@@ -1,5 +1,3 @@
-
-// Save / remove data
 const LOCAL_STORAGE_KEY_TIPS = "app.Tips";
 let tips = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TIPS)) || [];
 
@@ -11,6 +9,7 @@ const ukCrncyOpt = document.querySelector(".uk-crncy-option");
 const jpCrncyOpt = document.querySelector(".jp-crncy-option");
 const crncySpans = document.querySelectorAll("span.crncy");
 const crncySpanFirst = document.querySelector("span:first-child");
+
 
 // switch currencies
 crncyBtn.addEventListener("click", () => {
@@ -25,7 +24,10 @@ crncyBtn.addEventListener("click", () => {
 		`;
 	} else {
 		crncyList.classList.remove("active");
-		crncyBtn.style = "";
+		crncyBtn.style = `
+		color: var(--blue);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid var(--blue);`;
 	}
 });
 
@@ -139,50 +141,103 @@ function calcTip() {
 }
 calcTip();
 
+
+// global variables
+// let test = [];
 let saveDataBtn = document.querySelector(".save-data");
 let removeDataBtn = document.querySelector(".remove-data");
-
-saveDataBtn.addEventListener("click", () => {
+let listContainer = document.querySelector(".saved-tips-container");
+let container = document.createElement("div");
+container.classList.add("container");
+function createList() {
 	let tipPerPerson = document.querySelector("#tip-per-person").innerText;
-	tipPerPerson = tipPerPerson.substring(0);
-
 	let totalPerPerson = document.querySelector("#total-per-person").innerText;
-	totalPerPerson = totalPerPerson.substring(0);
 
-	let listContainer = document.querySelector(".saved-tips-container");
-	let listHolder = document.createElement("ul");
-	let listItemTipPP = document.createElement("li");
-	let listItemTotPP = document.createElement("li");
-	let iconRemove = document.createElement("i");
-	listItemTipPP.innerHTML = "Tip Per Person " + tipPerPerson;
-	listItemTotPP.innerHTML = "Total Per Person " + totalPerPerson;
-	listItemTipPP.classList.add("tipPP-list-item");
-	listItemTotPP.classList.add("totPP-list-item");
-	listHolder.classList.add("list-holder", "add-item");
-	iconRemove.classList.add("bi", "bi-x-circle-fill");
-
-	// let pattern = new RegExp("([\£\$\¥\kr\])(?=[0])");
-	listHolder.append(listItemTipPP, listItemTotPP, iconRemove);
-	listContainer.appendChild(listHolder);
-	let listHolders = document.querySelectorAll('.list-holder');
-		if (listHolders.length > 8) {
-			listContainer.style.height = 'auto';
-		}
-		else {
-			listContainer.style.height = '650px';
-		}
-
-	const receipt = {
-		tipPerPerson: tipPerPerson,
-		totalPerPerson: totalPerPerson,
-		id: Date.now().toString(),
-	}
+	let receipt = {
+		tipPerPerson,
+		totalPerPerson,
+		id: Date.now().toString()
+	};
 	tips.push(receipt);
+
+	let listHolder = document.createElement("ul");
+	listHolder.classList.add("list-holder", "add-item");
+	// let tipString = JSON.stringify(tips);
+	// let newTipString = tipString.split(',');
+	// let totItem = newTipString[0];
+	// let tipItem = newTipString[1];
+
+	let listItemTotPP = document.createElement("li");
+	listItemTotPP.classList.add("totPP-list-item");
+	listItemTotPP.innerText = receipt.totalPerPerson;
+
+	let listItemTipPP = document.createElement("li");
+	listItemTipPP.classList.add("tipPP-list-item");
+	listItemTipPP.innerText = receipt.tipPerPerson;
+
+	let iconRemove = document.createElement("i");
+	iconRemove.classList.add("bi", "bi-x-circle-fill");
+	listHolder.append(listItemTotPP, listItemTipPP, iconRemove);
+	container.appendChild(listHolder);
 	listHolder.setAttribute("data-id", receipt.id);
 	listHolder.addEventListener("click", removeItem);
-	saveList();
+	// 	let tipString = JSON.stringify(tips);
+	// 	let newTipString = tipString.split(',');
+	// 	var totItem = newTipString[0];
+	// 	var tipItem = newTipString[1];
+	// let listHolder = document.createElement("ul");
+	// listHolder.classList.add("list-holder", "add-item");
+	// let listItemTipPP = document.createElement("li");
+
+	// listItemTipPP.textContent = receipt.tipPerPerson;
+	// listItemTipPP.classList.add("tipPP-list-item");
+
+	// let listItemTotPP = document.createElement("li");
+	// listItemTotPP.textContent = receipt.totalPerPerson;
+	// listItemTotPP.classList.add("totPP-list-item");
+
+	// let iconRemove = document.createElement("i");
+	// iconRemove.classList.add("bi", "bi-x-circle-fill");
+
+
+	// listHolder.append(listItemTipPP, listItemTotPP, iconRemove);
+	// listContainer.appendChild(listHolder);
+	// 	let listHolder = document.createElement("ul");
+	// 	listHolder.classList.add("list-holder", "add-item");
+	// 	let tipString = JSON.stringify(tips);
+	// 	let newTipString = tipString.split(',');
+	// 	var totItem = newTipString[0];
+	// 	var tipItem = newTipString[1];
+	// 	// let filtered = tips.filter((a, i) => i % 2 === 1);
+	// 	// let newString = JSON.stringify(filtered);
+	// 	// console.log(filtered);
+	// 	let listItemTotPP = document.createElement("li");
+	// 	listItemTotPP.classList.add("totP-list-item");
+	// 	listItemTotPP.innerText = totItem;
+
+	// 	let listItemTipPP = document.createElement("li");
+	// 	listItemTipPP.classList.add("tipPP-list-item");
+	// 	listItemTipPP.innerText = tipItem;
+
+	// 	let iconRemove = document.createElement("i");
+	// iconRemove.classList.add("bi", "bi-x-circle-fill");
+	// 	listHolder.append(listItemTotPP, listItemTipPP, iconRemove);
+	// 	listContainer.appendChild(listHolder);
+
+
+}
+saveDataBtn.addEventListener("click", () => {
+	createList();
+	updateList();
+	// let listHolders = document.querySelectorAll('.list-holder');
+
+	// if (listHolders.length > 8) {
+	// 	listContainer.style.height = 'auto';
+	// }
+	// else {
+	// 	listContainer.style.height = '650px';
+	// }
 });
-// Remove item on click
 function removeItem(e) {
 	let itemToRemove = e.currentTarget;
 	itemToRemove.classList.remove("add-item");
@@ -190,57 +245,135 @@ function removeItem(e) {
 	setTimeout(function () {
 		itemToRemove.remove(e);
 	}, 350);
-
 	let idOfObjectToRemove = e.currentTarget.getAttribute("data-id");
 	tips = tips.filter((item) => item.id !== idOfObjectToRemove);
-	saveList();
+	updateList();
 }
+function updateList() {
+	saveList();
+	container.innerHTML = "";
+	tips.forEach((item) => {
+		listContainer.append();
+	})
 
-// Remove all items
-removeDataBtn.addEventListener("click", (e) => {
-	let listContainer = document.querySelector(".saved-tips-container");
-	let listHolders = document.querySelectorAll('.list-holder');
-	listHolders.forEach((listHolder) => {
-		listHolder.classList.remove("add-item");
-		listHolder.classList.add("remove-item");
-		setTimeout(function () {
-			listHolder.remove(e);
-			listContainer.style.height = '650px';
-		}, 350);
-		
-		tips = [];
-		saveList();
-	});
-});
+
+
+	// let listHolder = document.createElement("ul");
+	// listHolder.classList.add("list-holder", "add-item");
+	// let newTipString = tipString.split(',');
+	// var totItem = newTipString[0];
+	// var tipItem = newTipString[1];
+
+	// let listItemTotPP = document.createElement("li");
+	// listItemTotPP.classList.add("totPP-list-item");
+	// listItemTotPP.innerText = totItem;
+
+	// let listItemTipPP = document.createElement("li");
+	// listItemTipPP.classList.add("tipPP-list-item");
+	// listItemTipPP.innerText = tipItem;
+
+	// let iconRemove = document.createElement("i");
+	// iconRemove.classList.add("bi", "bi-x-circle-fill");
+	// listHolder.append(listItemTotPP, listItemTipPP, iconRemove);
+	// listContainer.appendChild(listHolder);
+
+	// let tipStrings = JSON.stringify(tips);
+	// console.log(tipStrings.match(/Total/));
+
+}
 function saveList() {
 	localStorage.setItem(LOCAL_STORAGE_KEY_TIPS, JSON.stringify(tips));
 }
+updateList();
 
-// function removeAllItems(event) {
-// 	let itemsToRemove = event.innerHTML;
-// 	itemsToRemove.remove(event);
-// }
+// Remove item on click
 
 
-// let historyRoot = document.querySelector('#history-root');
-// let clearHistoryBtn = document.querySelector('.clear-history');
-
-// function historyList(items) {
-// let historyList = document.createElement('ul');
-// items.forEach((item) =>{
-// let historyListItem = document.createElement('li');
-// historyListItem.innerText = item;
-// historyListItem.classList.add('history-list-item');
-// historyListItem.addEventListener('click', removeHistory);
-// historyList.append(historyListItem);
+// Remove all items
+// removeDataBtn.addEventListener("click", (e) => {
+// 	let listContainer = document.querySelector(".saved-tips-container");
+// 	let listHolders = document.querySelectorAll('.list-holder');
+// 	listHolders.forEach((listHolder) => {
+// 		listHolder.classList.remove("add-item");
+// 		listHolder.classList.add("remove-item");
+// 		setTimeout(function () {
+// 			listHolder.remove(e);
+// 			listContainer.style.height = '650px';
+// 		}, 350);
+// 		tips = [];
+// 		removeItemStyle();
+// 		updateList();
+// 	});
 // });
-// return historyList;
+
+// function removeItemStyle() {
+// 	document.head.appendChild(document.createElement("style")).innerHTML = `
+// 	.remove-item{
+// 		background-color: #e74c3c;
+// 		border-bottom: 1px solid #e74c3c;
+// 		border-radius: 7px;
+// 		transition: ease-in 0.2s;
+// 	}
+// 	.remove-item i{
+// 		z-index: 9999;
+// 		color: #fff;
+// 		transition: ease-out 0.3s;
+// 	}
+// 	.remove-item li{
+// 		color: #fff;
+// 		opacity: 0.5;
+// 	}
+// 	`;
+// }
+// let list = localStorage.getItem("list") || [];
+// let appRoot = document.querySelector(".saved-tips-container");
+
+// function addReceipt() {
+// 	list.push({
+// 		value: coolField.value
+// 	});
+// 	updateReceiptList();
 // }
 
-// fetch("...")
-// .then(response => {
-//   return response.json();
-// })
-// .then(data => {
+// function removeReceipt() {
 
-// })
+// 	updateReceiptList();
+// }
+
+// function updateReceiptList() {
+// 	appRoot.innerHTML = "";
+// 	list.forEach((item) => {
+// 		let newDiv = document.createElement("div");
+// 		div.innerHTML = item.value;
+// 		appRoot.append(newDiv);
+// 	})
+// 	storeList();
+// }
+
+// function storeList() {
+// 	localStorage.setItem("list", "list");
+// }
+
+// function reduceListToBasic(fullList) {
+// 	let basicList = [];
+// 	fullList.forEach((item) => {
+// 		basicList.push({
+// 			value: item.value
+// 		});
+// 	})
+// 	return basicList;
+// }
+
+// function saveReducedList() {
+// 	localStorage.setItem("reducedList", reduceListToBasic("list"));
+// }
+
+// function getReductList() {
+// 	list = reduceListToBasic(localStorage.getItem("list"));
+// }
+
+// function startup() {
+// 	updateReceiptList();
+// }
+
+// startup();
