@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&family=Telex&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
 /* CSS reset */
 html,
 body,
@@ -88,7 +89,9 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-} /* HTML5 display-role reset for older browsers */
+}
+
+/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,
@@ -102,14 +105,17 @@ nav,
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -117,10 +123,13 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
-} /* End */
+}
+
+/* End */
 
 /* Global styles */
 :root {
@@ -131,6 +140,7 @@ table {
   --second-green: #0eb477;
   --box-shadow: 0px 0px 18px 0px rgba(54, 54, 54, 0.349);
 }
+
 /* Fonts */
 label,
 span,
@@ -138,6 +148,7 @@ button,
 li {
   font-family: "IBM Plex Sans Thai Looped", sans-serif;
 }
+
 h1,
 h2,
 h3 {
@@ -145,18 +156,20 @@ h3 {
 }
 
 body {
+  position: relative;
   background-color: rgb(255, 255, 255);
-  background: linear-gradient(135deg, rgb(35, 149, 243), rgb(187, 42, 223))
-    fixed;
+  background: linear-gradient(135deg, rgb(35, 149, 243), rgb(187, 42, 223)) fixed;
   background-repeat: no-repeat;
+  height: 100vh;
 }
+
 .main-container {
   display: flex;
   justify-content: center;
   overflow: hidden;
   gap: 5%;
-  margin-top: 8vh;
 }
+
 .tipCalc-container {
   order: 1;
   background-color: rgb(237, 244, 251);
@@ -164,23 +177,29 @@ body {
   padding: 40px 50px;
   border-radius: 14px;
   height: 650px;
+  margin-top: 7vh;
   box-shadow: var(--box-shadow);
 }
+
 .tipCalc-container h1 {
+  color: rgb(31, 31, 31);
   text-align: center;
   font-size: 1.5rem;
   padding: 10px 0px;
   margin-bottom: 30px;
 }
+
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 20px 15px;
 }
+
 .hide {
   display: none !important;
 }
+
 .crncy-list {
   padding: 12px;
   line-height: 25px;
@@ -191,6 +210,7 @@ body {
   margin-bottom: 8px;
   cursor: default;
 }
+
 .crncy-list li {
   margin: 0px 12px;
   padding: 5px 0px 1px 6px;
@@ -198,25 +218,30 @@ body {
   text-align: center;
   transition: ease-in 0.12s;
 }
+
 .crncy-list img {
   width: 20px;
   height: auto;
 }
+
 .active-crncy {
   transform: scale(1.2);
   transition: ease-out 0.15s;
   border-bottom: 2px solid var(--blue);
   border-radius: 2px;
 }
+
 .tip-section {
   border-bottom: 1px solid #cdcfcf;
   padding: 5px 0px 20px;
 }
+
 .lbl {
   font-size: 16px;
   color: var(--dark-blue);
   font-weight: 400;
 }
+
 button {
   cursor: pointer;
   border-radius: 4px;
@@ -229,28 +254,34 @@ button {
   border: 1px solid var(--blue);
   transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
 }
+
 button:hover {
   color: #fff;
   background-color: var(--blue);
   border: 1px solid var(--blue);
   transition: ease-in 80ms;
 }
+
 button:active {
   border: 1px solid #fff;
 }
+
 section {
   margin-top: 30px;
 }
+
 /* Chrome, Safari, Edge, Opera */
 input.val::-webkit-outer-spin-button,
 input.val::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 /* Firefox */
 input.val[type="number"] {
   -moz-appearance: textfield;
 }
+
 .input-box {
   background-color: #cdcfcf9d;
   color: var(--blue);
@@ -258,6 +289,7 @@ input.val[type="number"] {
   border-radius: 5px;
   font-weight: 600;
 }
+
 input[type="range"] {
   width: 100%;
   cursor: pointer;
@@ -274,17 +306,64 @@ input[type="range"] {
   font-size: 18px;
   font-weight: 600;
 }
+
 .result-section {
   padding: 1px 0px;
   border-radius: 11px;
   background-color: #ceccfd;
 }
+
 .result-section .lbl {
   letter-spacing: 0.5px;
 }
+
 .result-section .crncy {
   color: #373737;
   font-weight: 800;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  clip-path: polygon(100% -1%, 60% 50%, 100% 101%);
+  background-color: #373737;
+  overflow: hidden;
+  animation-name: sidenav-animation;
+  transition: 315ms;
+
+}
+
+#sidenav-open-btn {
+  width: 10em;
+  height: 3em;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  padding: 0 5px 0 5px;
+  background-color: #373737;
+  border: none;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: 315ms;
+}
+
+#sidenav-open-icon {
+  order: 1;
+  position: relative;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+#sidenav-open-text {
+  order: 2;
+  position: relative;
+  color: #fff;
+  font-size: 1rem;
 }
 
 /* Saved tips */
@@ -294,28 +373,77 @@ input[type="range"] {
   top: 0;
   bottom: 0;
   order: 2;
-  display: flex;
   flex-direction: column;
   width: 350px;
   background-color: rgb(237, 244, 251);
   padding-top: 30px;
-  border-radius: 14px;
+  border-radius: 14px 0 0 14px;
   box-shadow: var(--box-shadow);
+  overflow-x: hidden;
+  z-index: 999;
 }
+
+.inactive-sidenav {
+  transform: translateX(450px);
+  transition: 480ms;
+}
+
+.active-sidenav {
+  animation: active-sidenav-animation 450ms;
+}
+
+@keyframes active-sidenav-animation {
+  from, to {
+    overflow: hidden;
+  }
+
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .saved-tips-container h1 {
-  font-size: 1.4rem;
-  text-align: center;
-  margin: 0px 0px 50px 0px;
-  padding: 20px 0px;
-  border-bottom: 1px solid #373737;
+  font-size: 1.35rem;
+  padding: 10px 0px 15px 0;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #cdcfcf;
+  color: rgb(31, 31, 31);
 }
+
+#sidenav-close-btn {
+  font-size: 1.75rem;
+  color: rgb(31, 31, 31) !important;
+  padding: .25em .35em;
+  position: absolute;
+  top: 2.2em;
+}
+
 .saved-tips-content {
   position: relative;
   height: auto;
 }
+
 .saved-tips-items {
   padding: 0 10px 50px 10px;
 }
+
 .list-holder {
   display: flex;
   flex-direction: row;
@@ -326,10 +454,12 @@ input[type="range"] {
   transition: ease-out 0.3s;
   border-bottom: 1px solid #cdcfcf;
 }
+
 .list-holder li {
   width: 130px;
   color: rgb(31, 31, 31);
 }
+
 i.bi {
   position: absolute;
   align-self: center;
@@ -337,65 +467,82 @@ i.bi {
   transition: ease-out 0.4s;
   color: #e74c3c;
   right: 15px;
+  cursor: pointer;
 }
+
 .list-holder:hover {
   background-color: #e74c3c;
   border-bottom: 1px solid #e74c3c;
   border-radius: 7px;
   transition: ease-in 0.2s;
 }
+
 .list-holder:hover i {
   z-index: 9999;
   color: #fff;
   transition: ease-out 0.3s;
 }
+
 .list-holder li:nth-child(odd) {
   margin-right: 10px;
 }
+
 .list-holder:hover li {
   color: #fff;
   opacity: 0.5;
 }
 
 .add-item {
-  transform: translateX(300px);
-  animation: add-item-animation 0.6s cubic-bezier(0.14, 0.25, 0.52, 1.56)
-    forwards;
+  animation: add-item-animation 0.45s forwards;
 }
+
 @keyframes add-item-animation {
+  from, to {
+    overflow: hidden;
+  }
+
   0% {
     opacity: 0;
     transform: translateX(300px);
   }
+
   70% {
     opacity: 1;
-    transform: translateX(-50px);
+    transform: translateX(-15px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
   }
+
 }
+
 .remove-item {
   animation: remove-item-animation 0.6s cubic-bezier(0.65, -0.02, 0.72, 0.99);
 }
+
 @keyframes remove-item-animation {
   0% {
     opacity: 1;
     transform: translateX(0);
   }
+
   25% {
     opacity: 1;
     transform: translateX(-90px);
   }
+
   50% {
     opacity: 0.5;
     transform: translateX(15vw);
   }
+
   75% {
     opacity: 0;
     transform: translateX(30vw);
   }
+
   100% {
     opacity: 0;
     transform: translateX(50vw);
@@ -408,46 +555,58 @@ i.bi {
     margin-top: 5vh;
     margin-bottom: 5vh;
   }
+
   .saved-tips-container {
     align-self: center;
     width: 55%;
     margin-top: 30px;
   }
+
   .tipCalc-container {
     width: 75%;
     align-self: center;
     padding: 25px 30px;
   }
+
   .wrapper {
     margin: 20px 5px;
   }
+
   .result-section {
     padding: 1px 15px;
   }
+
   .crncy-btn {
     display: none;
   }
+
   .hide {
     display: flex !important;
   }
+
   .crncy-list {
     margin: 0 auto;
   }
+
   .currency-section {
     margin: 50px 0;
   }
+
   .list-holder {
     flex-direction: row;
     flex-wrap: wrap;
   }
 }
+
 @media only screen and (max-width: 579px) {
   .list-holder li {
     width: auto;
   }
+
   i.bi {
     right: 5px;
   }
+
   .list-holder {
     padding: 8px 5px;
   }

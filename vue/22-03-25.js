@@ -1,5 +1,6 @@
 let app = Vue.createApp(
   {
+    el: '#app-root',
     data() {
       return {
         albums: [

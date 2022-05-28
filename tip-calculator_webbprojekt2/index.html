@@ -10,9 +10,21 @@
 </head>
 
 <body>
+  <div class="sidebar"></div>
   <div class="main-container">
-    <div class="saved-tips-container">
-      <h1>Saved Tips</h1>
+
+    <button id="sidenav-open-btn">
+      <i id="sidenav-open-icon" class="bi bi-arrow-bar-left"></i>
+      <a id="sidenav-open-text">Saved Tips</a>
+    </button>
+
+
+
+    <div class="saved-tips-container inactive-sidenav">
+      <section class="sidenav-header">
+        <h1>Saved Tips</h1>
+        <i id="sidenav-close-btn" class="bi bi-x"></i>
+      </section>
       <div class="saved-tips-items">
         <!-- Javascript generated content -->
       </div>

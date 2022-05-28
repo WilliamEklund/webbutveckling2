@@ -5,13 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width initial-scale=1.0">
   <title></title>
-  <script src="https://unpkg.com/vue@3"></script>
-  <script src="https://kit.fontawesome.com/e7c2c526f3.js" crossorigin=anonymous></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="container">
+  <!-- <div class="container">
 
     <header>
       <div class="header-logo">
@@ -39,216 +37,217 @@
         <a href="#"><i class="fas fa-heart"></i></a>
       </div>
       <!-- cart icon -->
-      <div class="shopping-cart pulse">
-        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+  <i class="fa-solid fa-cart-shopping"></i>
+  <div class="shopping-cart pulse">
+    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+  </div>
+  </header>
+
+  <!-- Sidenav menu -->
+
+  <nav class="sidenav" id="sidenavMenu">
+
+    <div class="static-sidenav-content">
+      <div class="sidenav-logo">
+        <a class="logo-link" href="./ikea.html"> <img class="sidenav-img" id="logoSidenav"
+            src="./bilder/ikea-logo.f88b07ceb5a8c356b7a0fdcc9a563d63.svg" alt="logo" />
+        </a>
       </div>
-    </header>
+      <!-- hamburger menu icon -->
+      <div class="hamburger pulse">
+        <div class="bar bar1"></div>
+        <div class="bar bar2"></div>
+        <div class="bar bar3"></div>
+      </div>
+    </div>
+    <!-- Sidenav items -->
+    <div id="sidenav-con-menu" class="sidenav-content">
+      <ul class="nav-unordered-list">
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor active">Erbjudanden</a>
+        </li>
+        <li class="nav-listed">
+          <a href="./produkter.html" class="nav-anchor active rum-link">Produkter</a>
+        </li>
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor active">Rum</a>
+        </li>
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor">IKEA Family</a>
+        </li>
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor">IKEA för företag</a>
+        </li>
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor">IKEA Restaurang & Bistro</a>
+        </li>
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor">Planeringsverktyg</a>
+        </li>
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor">Möt oss online</a>
+        </li>
+        <li class="nav-listed">
+          <a href="#" class="nav-anchor">Kundservice</a>
+        </li>
+      </ul>
+    </div>
 
-    <!-- Sidenav menu -->
+    <!-- Rum menu - displayed on click -->
+    <nav id="rum-hidden" class="rum-menu-hidden">
 
-    <nav class="sidenav" id="sidenavMenu">
-
-      <div class="static-sidenav-content">
-        <div class="sidenav-logo">
-          <a class="logo-link" href="./ikea.html"> <img class="sidenav-img" id="logoSidenav"
-              src="./bilder/ikea-logo.f88b07ceb5a8c356b7a0fdcc9a563d63.svg" alt="logo" />
+      <div class="subnav-header-flex">
+        <h3>Rum</h3>
+        <a class="pointer-left-exit-rum" href="#"><i class="fas fa-arrow-left"></i></a>
+      </div>
+      <!-- content -->
+      <div class="rum-main-content">
+        <div class="rum-gridbox1 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/koek-med-sinarp-lador-och-svart-fintorp-stang-med-stekpannor-abf6ad0d455646efd66062bc529bdce5.jpg?f=xxxs"
+              alt="rum-img1"></a>
+          <a class="rum-gridbox-text" href="#">Kök
           </a>
         </div>
-        <!-- hamburger menu icon -->
-        <div class="hamburger pulse">
-          <div class="bar bar1"></div>
-          <div class="bar bar2"></div>
-          <div class="bar bar3"></div>
+        <div class="rum-gridbox2 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/vitt-hemnes-spegelskap-ovanfoer-en-vit-kommod-intill-star-et-f5e2aed6665306986b27b9ec2245126c.jpg?f=xxxs alt"
+              alt="rum-img2"></a>
+          <a class="rum-gridbox-text" href="#">Badrum
+          </a>
+        </div>
+        <div class="rum-gridbox3 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/vardagsrum-med-stor-ljusgra-loungesoffa-med-faergglada-kudda-149f73892f6270ca4213f94a4283a9c1.jpg?f=xxxs"
+              alt="rum-img3"></a>
+          <a class="rum-gridbox-text" href="#">Vardagsrum
+          </a>
+        </div>
+        <div class="rum-gridbox4 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/hoeg-malm-saeng-med-4-foervaringslador-star-framfoer-en-plat-7ee9f2471b0031073f45b0ea292b8fe2.jpg?f=xxxs"
+              alt="rum-img4"></a>
+          <a class="rum-gridbox-text" href="#">Sovrum
+          </a>
+        </div>
+        <div class="rum-gridbox5 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/en-ljus-uteplats-med-en-gra-soffa-och-framfoer-den-ett-bord--fdb430372d17663efa26bc1be080f8fd.jpg?f=xxxs"
+              alt="rum-img5"></a>
+          <a class="rum-gridbox-text" href="#">Uteplats & Balkong
+          </a>
+        </div>
+        <div class="rum-gridbox6 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/en-matplats-med-ett-traebord-med-svarta-ben-och-svarta-stola-b37126d66ec75c2bf7dd94729b3f841d.jpg?f=xxxs"
+              alt="rum-img6"></a>
+          <a class="rum-gridbox-text" href="#">Matplats
+          </a>
+        </div>
+        <div class="rum-gridbox7 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/barnrum-daer-en-vit-smastad-loftsaeng-med-skrivbord-star-mot-35b8511ad1e923a5e4c44b9c5c4612ab.jpg?f=xxxs"
+              alt="rum-img7"></a>
+          <a class="rum-gridbox-text" href="#">Barnrum
+          </a>
+        </div>
+        <div class="rum-gridbox8 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/skrivbord-skrivbordsstol-vaeggmonterad-hylla-och-foervarings-2b5a2701ae002fc6b7e2143f1d867998.jpg?f=xxxs"
+              alt="rum-img8"></a>
+          <a class="rum-gridbox-text" href="#">Hemmakontor
+          </a>
+        </div>
+        <div class="rum-gridbox9 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/del-av-ett-rum-med-ytor-foer-avkoppling-stolar-och-soffbord--f301fe0088203b84da7f48f32f57d5f7.jpg?f=xxxs"
+              alt="rum-img9"></a>
+          <a class="rum-gridbox-text" href="#">Ikea för företag
+          </a>
+        </div>
+        <div class="rum-gridbox10 grid-items-rum">
+          <a href="#"><img
+              src="https://www.ikea.com/images/stoevlar-skor-rejsa-lador-i-metall-skohorn-en-skateboard-och-a82f94812a140a5f542b4a8c90b60beb.jpg?f=xxxs"
+              alt="rum-img10"></a>
+          <a class="rum-gridbox-text" href="#">Hall
+          </a>
         </div>
       </div>
-      <!-- Sidenav items -->
-      <div id="sidenav-con-menu" class="sidenav-content">
-        <ul class="nav-unordered-list">
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor active">Erbjudanden</a>
-          </li>
-          <li class="nav-listed">
-            <a href="./produkter.html" class="nav-anchor active rum-link">Produkter</a>
-          </li>
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor active">Rum</a>
-          </li>
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor">IKEA Family</a>
-          </li>
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor">IKEA för företag</a>
-          </li>
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor">IKEA Restaurang & Bistro</a>
-          </li>
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor">Planeringsverktyg</a>
-          </li>
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor">Möt oss online</a>
-          </li>
-          <li class="nav-listed">
-            <a href="#" class="nav-anchor">Kundservice</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Rum menu - displayed on click -->
-      <nav id="rum-hidden" class="rum-menu-hidden">
-
-        <div class="subnav-header-flex">
-          <h3>Rum</h3>
-          <a class="pointer-left-exit-rum" href="#"><i class="fas fa-arrow-left"></i></a>
-        </div>
-        <!-- content -->
-        <div class="rum-main-content">
-          <div class="rum-gridbox1 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/koek-med-sinarp-lador-och-svart-fintorp-stang-med-stekpannor-abf6ad0d455646efd66062bc529bdce5.jpg?f=xxxs"
-                alt="rum-img1"></a>
-            <a class="rum-gridbox-text" href="#">Kök
-            </a>
-          </div>
-          <div class="rum-gridbox2 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/vitt-hemnes-spegelskap-ovanfoer-en-vit-kommod-intill-star-et-f5e2aed6665306986b27b9ec2245126c.jpg?f=xxxs alt"
-                alt="rum-img2"></a>
-            <a class="rum-gridbox-text" href="#">Badrum
-            </a>
-          </div>
-          <div class="rum-gridbox3 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/vardagsrum-med-stor-ljusgra-loungesoffa-med-faergglada-kudda-149f73892f6270ca4213f94a4283a9c1.jpg?f=xxxs"
-                alt="rum-img3"></a>
-            <a class="rum-gridbox-text" href="#">Vardagsrum
-            </a>
-          </div>
-          <div class="rum-gridbox4 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/hoeg-malm-saeng-med-4-foervaringslador-star-framfoer-en-plat-7ee9f2471b0031073f45b0ea292b8fe2.jpg?f=xxxs"
-                alt="rum-img4"></a>
-            <a class="rum-gridbox-text" href="#">Sovrum
-            </a>
-          </div>
-          <div class="rum-gridbox5 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/en-ljus-uteplats-med-en-gra-soffa-och-framfoer-den-ett-bord--fdb430372d17663efa26bc1be080f8fd.jpg?f=xxxs"
-                alt="rum-img5"></a>
-            <a class="rum-gridbox-text" href="#">Uteplats & Balkong
-            </a>
-          </div>
-          <div class="rum-gridbox6 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/en-matplats-med-ett-traebord-med-svarta-ben-och-svarta-stola-b37126d66ec75c2bf7dd94729b3f841d.jpg?f=xxxs"
-                alt="rum-img6"></a>
-            <a class="rum-gridbox-text" href="#">Matplats
-            </a>
-          </div>
-          <div class="rum-gridbox7 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/barnrum-daer-en-vit-smastad-loftsaeng-med-skrivbord-star-mot-35b8511ad1e923a5e4c44b9c5c4612ab.jpg?f=xxxs"
-                alt="rum-img7"></a>
-            <a class="rum-gridbox-text" href="#">Barnrum
-            </a>
-          </div>
-          <div class="rum-gridbox8 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/skrivbord-skrivbordsstol-vaeggmonterad-hylla-och-foervarings-2b5a2701ae002fc6b7e2143f1d867998.jpg?f=xxxs"
-                alt="rum-img8"></a>
-            <a class="rum-gridbox-text" href="#">Hemmakontor
-            </a>
-          </div>
-          <div class="rum-gridbox9 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/del-av-ett-rum-med-ytor-foer-avkoppling-stolar-och-soffbord--f301fe0088203b84da7f48f32f57d5f7.jpg?f=xxxs"
-                alt="rum-img9"></a>
-            <a class="rum-gridbox-text" href="#">Ikea för företag
-            </a>
-          </div>
-          <div class="rum-gridbox10 grid-items-rum">
-            <a href="#"><img
-                src="https://www.ikea.com/images/stoevlar-skor-rejsa-lador-i-metall-skohorn-en-skateboard-och-a82f94812a140a5f542b4a8c90b60beb.jpg?f=xxxs"
-                alt="rum-img10"></a>
-            <a class="rum-gridbox-text" href="#">Hall
-            </a>
-          </div>
-        </div>
-      </nav>
-
     </nav>
 
-    <!-- main content -->
-    <div class="grid-container">
+  </nav>
+
+  <!-- main content -->
+  <div class="grid-container">
 
 
-      <div class="box9">
-        <div class="footer-content">
+    <div class="box9">
+      <div class="footer-content">
 
-          <div class="footer-columns column1">
-            <h2>Gå med i IKEA Family</h2>
-            <p>
-              Ge dina idéer nytt liv med erbjudanden, inspiration och massor av
-              aktiviteter i våra varuhus - helt kostnadsfritt. Se mer.
-            </p>
-            <button>Gå med eller logga in</button>
-          </div>
+        <div class="footer-columns column1">
+          <h2>Gå med i IKEA Family</h2>
+          <p>
+            Ge dina idéer nytt liv med erbjudanden, inspiration och massor av
+            aktiviteter i våra varuhus - helt kostnadsfritt. Se mer.
+          </p>
+          <button>Gå med eller logga in</button>
+        </div>
 
-          <div class="footer-columns footer-lists column2">
-            <ul>
-              <li class="bolder">Handla på IKEA</li>
-              <li>Varuhus & öppettider</li>
-              <li>Betalning</li>
-              <li>Följ din order</li>
-              <li>Leveransalternativ</li>
-              <li>Presentkort</li>
-              <li>Katalog & broschyrer</li>
-              <li>Hela sortimentet</li>
-              <li>Planeringsverktyg</li>
-              <li>IKEA för företag</li>
-            </ul>
-          </div>
+        <div class="footer-columns footer-lists column2">
+          <ul>
+            <li class="bolder">Handla på IKEA</li>
+            <li>Varuhus & öppettider</li>
+            <li>Betalning</li>
+            <li>Följ din order</li>
+            <li>Leveransalternativ</li>
+            <li>Presentkort</li>
+            <li>Katalog & broschyrer</li>
+            <li>Hela sortimentet</li>
+            <li>Planeringsverktyg</li>
+            <li>IKEA för företag</li>
+          </ul>
+        </div>
 
-          <div class="footer-columns footer-lists column3">
-            <ul>
-              <li class="bolder">Support</li>
-              <li>Kontakta oss</li>
-              <li>Betalning</li>
-              <li>Kundservice</li>
-              <li>Retur & reklamation</li>
-              <li>Presentkort</li>
-              <li>Köp & leveransvillkor</li>
-              <li>Hela sortimentet</li>
-              <li>Planeringsverktyg</li>
-              <li>Ge IKEA feedback</li>
-            </ul>
-          </div>
+        <div class="footer-columns footer-lists column3">
+          <ul>
+            <li class="bolder">Support</li>
+            <li>Kontakta oss</li>
+            <li>Betalning</li>
+            <li>Kundservice</li>
+            <li>Retur & reklamation</li>
+            <li>Presentkort</li>
+            <li>Köp & leveransvillkor</li>
+            <li>Hela sortimentet</li>
+            <li>Planeringsverktyg</li>
+            <li>Ge IKEA feedback</li>
+          </ul>
+        </div>
 
-          <div class="footer-columns footer-lists column4">
-            <ul>
-              <li class="bolder">Ikea Family</li>
-              <li>Bli medlem</li>
-              <li>Medlemsförmåner</li>
-              <li>Om Ikea Family</li>
-              <li>Retur & reklamation</li>
-            </ul>
-          </div>
+        <div class="footer-columns footer-lists column4">
+          <ul>
+            <li class="bolder">Ikea Family</li>
+            <li>Bli medlem</li>
+            <li>Medlemsförmåner</li>
+            <li>Om Ikea Family</li>
+            <li>Retur & reklamation</li>
+          </ul>
+        </div>
 
-          <div class="footer-columns footer-lists column5">
-            <ul>
-              <li class="bolder">Om oss</li>
-              <li>Det här är Ikea</li>
-              <li>Hållbarhet</li>
-              <li>Jobba på Ikea</li>
-              <li>Pressrum</li>
-              <li>Ikea Foundation</li>
-              <li>Ikea Museum</li>
-            </ul>
-          </div>
+        <div class="footer-columns footer-lists column5">
+          <ul>
+            <li class="bolder">Om oss</li>
+            <li>Det här är Ikea</li>
+            <li>Hållbarhet</li>
+            <li>Jobba på Ikea</li>
+            <li>Pressrum</li>
+            <li>Ikea Foundation</li>
+            <li>Ikea Museum</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+  </div> -->
 
   <script> </script>
 </body>

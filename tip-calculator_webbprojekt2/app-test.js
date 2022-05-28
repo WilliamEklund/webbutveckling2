@@ -1,6 +1,3 @@
-// const LOCAL_STORAGE_KEY_TIPS = "app.Tips";
-// let tips = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TIPS)) || [];
-
 const crncyBtn = document.querySelector(".crncy-btn");
 const crncyList = document.querySelector(".crncy-list");
 const sweCrncyOpt = document.querySelector(".swe-crncy-option");
@@ -140,20 +137,110 @@ function calcTip() {
 }
 calcTip();
 
-// global variables
-// let test = [];
+
 const tipContainer = document.querySelector(".saved-tips-container");
 const tipItems = document.querySelector(".saved-tips-items");
 const saveDataBtn = document.querySelector(".save-data");
 const removeDataBtn = document.querySelector(".remove-data");
 const tipPerPerson = document.querySelector("#tip-per-person");
 const totalPerPerson = document.querySelector("#total-per-person");
+const sidenavCloseBtn = document.querySelector("#sidenav-close-btn");
+const sidenavOpenBtn = document.querySelector('#sidenav-open-btn');
+const sidenavIcon = document.querySelector('#sidenav-open-icon');
+const inactiveSidenav = document.querySelector('.inactive');
+let toggleSidenavStyle = document.head.appendChild(document.createElement('style'));
+
+sidenavOpenBtn.addEventListener("click", () => {
+  tipContainer.classList.toggle('inactive-sidenav');
+  if (tipContainer.classList.contains('inactive-sidenav')) {
+    sidenavIcon.classList.remove('bi-arrow-bar-right');
+    sidenavIcon.classList.add('bi-arrow-bar-left');
+    tipContainer.classList.remove('active-sidenav');
+    toggleSidenavStyle.innerHTML = `
+      .sidebar, #sidenav-open-btn{
+            transform: translateX(0);      
+      }
+      body {
+        overflow-x:hidden;  
+    }
+      `;
+  }
+  if (tipContainer.classList.contains('inactive-sidenav') !== true) {
+    console.log("show");
+    sidenavIcon.classList.remove('bi-arrow-bar-left');
+    sidenavIcon.classList.add('bi-arrow-bar-right');
+    tipContainer.classList.add('active-sidenav');
+    toggleSidenavStyle.innerHTML = `
+      .sidebar, #sidenav-open-btn{
+        transform: translateX(-345px);      
+      }
+      .sidebar{
+        height: 99%;
+        margin: 8px 0;
+        border-radius: 5px;
+      }
+      body {
+        overflow-x:hidden;  
+    }
+      `;
+
+  }
+});
+sidenavCloseBtn.addEventListener("click", () => {
+  tipContainer.classList.remove('active-sidenav');
+  tipContainer.classList.add('inactive-sidenav');
+  setTimeout(() => {
+    toggleSidenavStyle.innerHTML = `
+    .sidebar, #sidenav-open-btn{
+      transform: translateX(0);      
+    }
+    body {
+      overflow-x:hidden;  
+  }
+  .inactive-sidenav{
+    transform: translateX(100%);
+    }
+    `;
+  }, 350)
+
+});
 
 const LOCAL_STORAGE_KEY_TIPS = "app.Tips";
 let tips = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TIPS)) || [];
 
 function toggleTipContainer() {
-  tipContainer.style.display = tips.length === 0 ? "none" : "flex";
+  // tipContainer.style.display = tips.length === 0 ? "none" : "flex";
+  if (tips.length > 0) {
+    tipContainer.classList.remove('inactive-sidenav');
+    tipContainer.classList.add('active-sidenav');
+    toggleSidenavStyle.innerHTML = `
+  .sidebar, #sidenav-open-btn{
+    transform: translateX(-345px);  
+  }
+  .sidebar{
+    height: 99%;
+    margin: 8px 0;
+    border-radius: 5px;
+  }
+  body {
+    overflow-x:hidden;  
+}
+  `;
+  }
+  if (tips.length === 0) {
+    setTimeout(() => {
+      tipContainer.classList.remove('active-sidenav');
+      tipContainer.classList.add('inactive-sidenav');
+      toggleSidenavStyle.innerHTML = `
+  .sidebar, #sidenav-open-btn{
+            transform: translateX(0);      
+  }
+  body {
+    overflow-x:hidden;  
+}
+  `;
+    }, 350)
+  }
 }
 function addHeightTipContainer() {
   tipContainer.style.height = tips.length > 8 ? "max-content" : "auto";
@@ -240,45 +327,5 @@ removeDataBtn.addEventListener("click", (e) => {
 
 function saveList() {
   localStorage.setItem(LOCAL_STORAGE_KEY_TIPS, JSON.stringify(tips));
-  console.log(tips);
 }
 toggleTipContainer();
-
-
-// const addItem = (tipPP, totalPP) => {
-//   items.push({
-//     tipPP,
-//     totalPP
-//   });
-//   localStorage.setItem("items", JSON.stringify("items"));
-//   return { tipPP, totalPP };
-// };
-
-// const createItem = ({ tipPP, totalPP }) => {
-//   let listContainer = document.createElement("div");
-//   let listItems = document.createElement("ul");
-//   let listItemTip = document.createElement("li");
-//   let listItemTotal = document.createElement("li");
-
-//   listItemTip.innerText = `Tip ${tipPP}`;
-//   listItemTotal.innerText = `Total ${totalPP}`;
-
-//   listItems.append(listItemTip, listItemTotal);
-//   listContainer.appendChild(listItems);
-//   container.appendChild(listContainer);
-
-// };
-
-// items.forEach(createItem);
-
-// saveDataBtn.addEventListener("click", () => {
-
-//   let newItem = addItem(
-//     tipPerPerson.toString(),
-//     totalPerPerson,
-//   );
-
-//   createItem(newItem);
-//   tipPerPerson = "";
-//   totalPerPerson = "";
-// });
